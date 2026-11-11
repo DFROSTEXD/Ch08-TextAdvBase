@@ -1,0 +1,23 @@
+World of Zuul - Implemented Features
+
+Required Features:
+
+	Added a main method to run the game outside BlueJ.
+
+	Added three more rooms to expand the amount of rooms to eight.
+
+	Implemented the look command to let players see where they are and what's 	around them.
+
+	Added items that now have descriptions and weights.
+
+	Allowed rooms to contain multiple items.
+
+	Put in the back command for players.
+
+	Extended the back command to let players go back more than one room.
+
+	Created a Player class that tracks what room the player is in.
+
+	Implemented both take and drop commands.
+
+	Allowed the player to carry multiple items.
