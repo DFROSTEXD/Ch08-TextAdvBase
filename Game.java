@@ -20,8 +20,8 @@ import java.util.Stack;
 public class Game 
 {
     private Parser parser;
-    private Room currentRoom;
     private Stack<Room> roomHistory;
+    private Player player;
         
     /**
      * Create the game and initialise its internal map.
@@ -78,7 +78,7 @@ public class Game
         cafe.addItem(new Item("coffee", "A hot cup of coffee", 1));
         closet.addItem(new Item("Key", "A small rusty key", 1));
 
-        currentRoom = outside;  // start game outside
+        player = new Player(outside); // start game outside
     }
 
     /**
@@ -109,7 +109,7 @@ public class Game
         System.out.println("World of Zuul is a new, incredibly boring adventure game.");
         System.out.println("Type '" + CommandWord.HELP + "' if you need help.");
         System.out.println();
-        System.out.println(currentRoom.getLongDescription());
+        System.out.println(player.getCurrentRoom().getLongDescription());
     }
 
     /**
@@ -141,7 +141,7 @@ public class Game
                 break;
             
             case LOOK:
-                System.out.println(currentRoom.getLongDescription());
+                System.out.println(player.getCurrentRoom().getLongDescription());
                 break;
             
             case BACK:
@@ -182,15 +182,15 @@ public class Game
         String direction = command.getSecondWord();
 
         // Try to leave current room.
-        Room nextRoom = currentRoom.getExit(direction);
+        Room nextRoom = player.getCurrentRoom().getExit(direction);
 
         if (nextRoom == null) {
             System.out.println("There is no door!");
         }
         else {
-            roomHistory.push(currentRoom);
-            currentRoom = nextRoom;
-            System.out.println(currentRoom.getLongDescription());
+            roomHistory.push(player.getCurrentRoom());
+            player.setCurrentRoom(nextRoom);
+            System.out.println(player.getCurrentRoom().getLongDescription());
         }
     }
 
@@ -226,8 +226,8 @@ public class Game
             System.out.println("You cannot go back anymore.");
         }
         else {
-            currentRoom = roomHistory.pop();
-            System.out.println(currentRoom.getLongDescription());
+            player.setCurrentRoom(roomHistory.pop());
+            System.out.println(player.getCurrentRoom().getLongDescription());
         }
     }
 }
