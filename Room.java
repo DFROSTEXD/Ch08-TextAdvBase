@@ -13,8 +13,8 @@ import java.util.ArrayList;
  * connected to other rooms via exits.  For each existing exit, the room 
  * stores a reference to the neighboring room.
  * 
- * @author  Michael Kölling and David J. Barnes
- * @version 2016.02.29
+ * @author  Michael Kölling, David J. Barnes, and William Harvey
+ * @version 2026.11.11
  */
 
 public class Room 
@@ -59,7 +59,7 @@ public class Room
      * Return a description of the room in the form:
      *     You are in the kitchen.
      *     Exits: north west
-     * @return A long description of this room
+     * @return A long description of this room.
      */
     public String getLongDescription()
     {
@@ -109,6 +109,11 @@ public class Room
         items.add(item);
     }
     
+    /**
+     * Searches the room for an item with a certain name.
+     * @param name The name of the item to find.
+     * @return The correct item, or null if no item is there.
+     */
     public Item getItem(String name)
     {
         for (Item item : items) {
@@ -119,6 +124,10 @@ public class Room
         return null;
     }
     
+    /**
+     * Removes the item.
+     * @param item The item to remove.
+     */
     public void removeItem(Item item)
     {
         items.remove(item);

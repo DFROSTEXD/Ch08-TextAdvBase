@@ -13,7 +13,7 @@ import java.util.Stack;
  *  rooms, creates the parser and starts the game.  It also evaluates and
  *  executes the commands that the parser returns.
  * 
- * @author  Michael Kölling, David J. Barnes and William Harvey
+ * @author  Michael Kölling, David J. Barnes, and William Harvey
  * @version 2026.11.10
  */
 
@@ -83,7 +83,7 @@ public class Game
     }
 
     /**
-     *  Main play routine.  Loops until end of play.
+     *  Main play routine. Loops until end of play.
      */
     public void play() 
     {            
@@ -179,6 +179,7 @@ public class Game
     /** 
      * Try to go in one direction. If there is an exit, enter the new
      * room, otherwise print an error message.
+     * @param command The command containing the direction to move.
      */
     private void goRoom(Command command) 
     {
@@ -219,7 +220,7 @@ public class Game
         }
     }
     
-        /**
+    /**
      * Start the game outside of BlueJ.
      * @param args Command-line arguments (not used).
      */
@@ -229,6 +230,11 @@ public class Game
         game.play();
     }
     
+    /**
+     * Allows the player to go back to previously visited rooms 
+     * until they can't go back anymore, and prints a message that 
+     * corresponds to the room you're in.
+     */
     private void goBack()
     {
         if (roomHistory.empty()) {
@@ -240,6 +246,10 @@ public class Game
         }
     }
     
+    /**
+     * Gives the player the ability to take an item from the room they are in.
+     * @param command The command specifying what item to pick up.
+     */
     private void takeItem(Command command)
     {
         if (!command.hasSecondWord()) {
@@ -261,6 +271,11 @@ public class Game
         }
     }
     
+    /**
+     * Gives the player the ability to drop items in their inventory
+     * into the room they are in.
+     * @param command The command specifying what item to drop.
+     */
     private void dropItem(Command command)
     {
         if (!command.hasSecondWord()) {
