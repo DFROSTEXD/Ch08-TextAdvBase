@@ -13,8 +13,8 @@ import java.util.Stack;
  *  rooms, creates the parser and starts the game.  It also evaluates and
  *  executes the commands that the parser returns.
  * 
- * @author  Michael Kölling and David J. Barnes
- * @version 2016.02.29
+ * @author  Michael Kölling, David J. Barnes and William Harvey
+ * @version 2026.11.10
  */
 
 public class Game 
@@ -35,6 +35,7 @@ public class Game
 
     /**
      * Create all the rooms and link their exits together.
+     * Made all 
      */
     private void createRooms()
     {
@@ -146,6 +147,10 @@ public class Game
             
             case BACK:
                 goBack();
+                break;
+                
+            case TAKE:
+                takeItem(command);
                 break;
         }
         return wantToQuit;

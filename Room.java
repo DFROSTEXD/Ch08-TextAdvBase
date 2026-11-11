@@ -108,5 +108,20 @@ public class Room
     {
         items.add(item);
     }
+    
+    public Item getItem(String name)
+    {
+        for (Item item : items) {
+            if (item.getName().equalsIgnoreCase(name)) {
+                return item;
+            }
+        }
+        return null;
+    }
+    
+    public void removeItem(Item item)
+    {
+        items.remove(item);
+    }
 }
 
