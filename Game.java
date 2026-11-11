@@ -130,6 +130,10 @@ public class Game
             case QUIT:
                 wantToQuit = quit(command);
                 break;
+            
+            case LOOK:
+                System.out.println(currentRoom.getLongDescription());
+                break;
         }
         return wantToQuit;
     }
@@ -190,5 +194,15 @@ public class Game
         else {
             return true;  // signal that we want to quit
         }
+    }
+    
+        /**
+     * Start the game outside of BlueJ.
+     * @param args Command-line arguments (not used).
+     */
+    public static void main(String[] args)
+    {
+        Game game = new Game();
+        game.play();
     }
 }
