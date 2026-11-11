@@ -68,6 +68,11 @@ public class Game
         
         cafe.setExit("north", closet);
         closet.setExit("south", cafe);
+        
+        library.addItem(new Item("book", "An old textbook", 2));
+        library.addItem(new Item("pen", "A blue ballpoint pen", 1));
+        cafe.addItem(new Item("coffee", "A hot cup of coffee", 1));
+        closet.addItem(new Item("Key", "A small rusty key", 1));
 
         currentRoom = outside;  // start game outside
     }
