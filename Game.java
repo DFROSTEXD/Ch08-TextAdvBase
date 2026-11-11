@@ -152,6 +152,10 @@ public class Game
             case TAKE:
                 takeItem(command);
                 break;
+                
+            case DROP:
+                dropItem(command);
+                break;
         }
         return wantToQuit;
     }
@@ -254,6 +258,26 @@ public class Game
             room.removeItem(item);
             player.addItem(item);
             System.out.println("You picked up the " + item.getName() + ".");
+        }
+    }
+    
+    private void dropItem(Command command)
+    {
+        if (!command.hasSecondWord()) {
+            System.out.println("Drop what?");
+            return;
+        }
+        
+        String itemName = command.getSecondWord();
+        Item item = player.getItem(itemName);
+        
+        if (item == null) {
+            System.out.println("The item isn't in your inventory");
+        }
+        else {
+            player.removeItem(item);
+            player.getCurrentRoom().addItem(item);
+            System.out.println("You dropped " + item.getName() + ".");
         }
     }
 }

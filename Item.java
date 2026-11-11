@@ -13,7 +13,10 @@ public class Item
     private int weight;
 
     /**
-     * Create an item with a name, description, and height
+     * Create an item with a name, description, and weight
+     * @param name The name of the item
+     * @param description The description of the item
+     * @param weight The weight of the item
      */
     public Item(String name, String description, int weight)
     {
