@@ -235,4 +235,25 @@ public class Game
             System.out.println(player.getCurrentRoom().getLongDescription());
         }
     }
+    
+    private void takeItem(Command command)
+    {
+        if (!command.hasSecondWord()) {
+            System.out.println("Take what?");
+            return;
+        }
+        
+        String itemName = command.getSecondWord();
+        Room room = player.getCurrentRoom();
+        Item item = room.getItem(itemName);
+        
+        if (item == null) {
+            System.out.println("The item isn't in this room.");
+        }
+        else {
+            room.removeItem(item);
+            player.addItem(item);
+            System.out.println("You picked up the " + item.getName() + ".");
+        }
+    }
 }
